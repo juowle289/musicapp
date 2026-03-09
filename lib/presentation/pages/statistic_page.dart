@@ -18,8 +18,8 @@ class StatisticPage extends StatelessWidget {
           backgroundColor: isDarkMode ? darkBackground : Colors.white,
           navigationBar: CupertinoNavigationBar(
             backgroundColor: isDarkMode
-                ? darkBackground.withOpacity(0.8)
-                : Colors.white.withOpacity(0.8),
+                ? darkBackground.withValues(alpha: 0.8)
+                : Colors.white.withValues(alpha: 0.8),
             middle: Text(
               'Thống kê',
               style: TextStyle(
@@ -33,6 +33,7 @@ class StatisticPage extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 20),
+                  
                   const MusicBioChart(),
                 ],
               ),

@@ -214,7 +214,7 @@ class _HomePageState extends State<HomePage> {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.home_outlined,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
@@ -225,7 +225,7 @@ class _HomePageState extends State<HomePage> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.library_music,
+                  Icons.library_music_outlined,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
@@ -240,25 +240,25 @@ class _HomePageState extends State<HomePage> {
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
-                  Icons.add_circle_outline,
+                  Icons.add_circle_sharp,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Thêm nhạc',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.favorite_border,
+                  Icons.favorite_border_outlined,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
-                  Icons.favorite_border,
+                  Icons.favorite_sharp,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Yêu thích',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.settings,
+                  Icons.settings_outlined,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(

@@ -37,6 +37,7 @@ import 'package:musicapp/datas/providers/music_provider.dart';
 import 'package:musicapp/datas/providers/auth_provider.dart';
 import 'package:musicapp/datas/providers/loved_provider.dart';
 import 'package:musicapp/datas/providers/comment_provider.dart';
+import 'package:musicapp/datas/providers/song_provider.dart';
 
 class SongDetailPage extends StatefulWidget {
   final Song song;
@@ -61,6 +62,8 @@ class _SongDetailPageState extends State<SongDetailPage> {
       final musicProvider = context.read<MusicProvider>();
       if (musicProvider.currentSong?.id != widget.song.id) {
         musicProvider.playSong(widget.song);
+        // Increment play count when song starts
+        context.read<SongProvider>().incrementPlayCount(widget.song.id);
       }
     });
     _commentScrollController.addListener(_onCommentScroll);
@@ -190,9 +193,9 @@ class _SongDetailPageState extends State<SongDetailPage> {
                 onTap: () {
                   Navigator.pop(context);
                   context.read<CommentProvider>().deleteComment(comment.id!);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Đã xóa bình luận')),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text('Đã xóa bình luận')));
                 },
               ),
             ListTile(
@@ -209,9 +212,9 @@ class _SongDetailPageState extends State<SongDetailPage> {
               onTap: () {
                 Navigator.pop(context);
                 context.read<CommentProvider>().reportComment(comment.id!);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Đã báo cáo bình luận')),
-                );
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text('Đã báo cáo bình luận')));
               },
             ),
             const SizedBox(height: 10),
@@ -462,8 +465,11 @@ class _SongDetailPageState extends State<SongDetailPage> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: (isDarkMode ? Colors.grey[700]! : CupertinoColors.systemGrey)
-                        .withValues(alpha: 0.2),
+                    color:
+                        (isDarkMode
+                                ? Colors.grey[700]!
+                                : CupertinoColors.systemGrey)
+                            .withValues(alpha: 0.2),
                     spreadRadius: 1,
                     blurRadius: 20,
                     offset: const Offset(0, 10),
@@ -472,7 +478,8 @@ class _SongDetailPageState extends State<SongDetailPage> {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: widget.song.coverPath != null &&
+                child:
+                    widget.song.coverPath != null &&
                         widget.song.coverPath!.isNotEmpty
                     ? Image.asset(
                         widget.song.coverPath!,
@@ -509,7 +516,9 @@ class _SongDetailPageState extends State<SongDetailPage> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: isDarkMode ? Colors.white : CupertinoColors.label,
+                        color: isDarkMode
+                            ? Colors.white
+                            : CupertinoColors.label,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -561,8 +570,9 @@ class _SongDetailPageState extends State<SongDetailPage> {
                 trackHeight: 4,
                 thumbShape: SliderComponentShape.noThumb,
                 overlayShape: SliderComponentShape.noOverlay,
-                activeTrackColor:
-                    isDarkMode ? darkAccent : CupertinoColors.label,
+                activeTrackColor: isDarkMode
+                    ? darkAccent
+                    : CupertinoColors.label,
                 inactiveTrackColor: isDarkMode
                     ? Colors.grey[700]
                     : CupertinoColors.systemGrey4.withValues(alpha: 0.5),
@@ -623,6 +633,8 @@ class _SongDetailPageState extends State<SongDetailPage> {
                       musicProvider.togglePlayPause();
                     } else {
                       musicProvider.playSong(widget.song);
+                      // Increment play count when switching to a new song
+                      context.read<SongProvider>().incrementPlayCount(widget.song.id);
                     }
                   },
                   child: Icon(
@@ -822,7 +834,8 @@ class _SongDetailPageState extends State<SongDetailPage> {
                 controller: _commentScrollController,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: commentProvider.comments.length +
+                itemCount:
+                    commentProvider.comments.length +
                     (commentProvider.isLoading ? 1 : 0),
                 itemBuilder: (context, index) {
                   if (index == commentProvider.comments.length) {
@@ -845,8 +858,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
     );
   }
 
-  Widget _buildCommentItem(
-      Comment comment, bool isDarkMode, Color darkAccent) {
+  Widget _buildCommentItem(Comment comment, bool isDarkMode, Color darkAccent) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(12),
@@ -1111,7 +1123,9 @@ class _AddToPlaylistSheetState extends State<_AddToPlaylistSheet> {
               builder: (context, playlistProvider, child) {
                 // Lọc chỉ lấy playlist của tài khoản hiện tại
                 final myPlaylists = playlistProvider.playlists
-                    .where((playlist) => playlist.creatorEmail == currentUserEmail)
+                    .where(
+                      (playlist) => playlist.creatorEmail == currentUserEmail,
+                    )
                     .toList();
 
                 if (myPlaylists.isEmpty) {
@@ -1146,9 +1160,10 @@ class _AddToPlaylistSheetState extends State<_AddToPlaylistSheet> {
                   itemBuilder: (context, index) {
                     final playlist = myPlaylists[index];
                     // Kiểm tra xem bài hát đã có trong playlist chưa
-                    final isInPlaylist = widget.song.id != null &&
+                    final isInPlaylist =
+                        widget.song.id != null &&
                         playlist.songIds.contains(widget.song.id);
-                    
+
                     return ListTile(
                       leading: Container(
                         width: 50,
@@ -1218,7 +1233,7 @@ class _AddToPlaylistSheetState extends State<_AddToPlaylistSheet> {
 
   Future<void> _togglePlaylist(Playlist playlist, bool isInPlaylist) async {
     final playlistProvider = context.read<PlaylistProvider>();
-    
+
     if (isInPlaylist) {
       // Xóa bài hát khỏi playlist
       final updatedSongIds = playlist.songIds
@@ -1228,13 +1243,14 @@ class _AddToPlaylistSheetState extends State<_AddToPlaylistSheet> {
       await playlistProvider.updatePlaylist(updatedPlaylist);
     } else {
       // Thêm bài hát vào playlist
-      if (widget.song.id != null && !playlist.songIds.contains(widget.song.id)) {
+      if (widget.song.id != null &&
+          !playlist.songIds.contains(widget.song.id)) {
         final updatedSongIds = [...playlist.songIds, widget.song.id!];
         final updatedPlaylist = playlist.copyWith(songIds: updatedSongIds);
         await playlistProvider.updatePlaylist(updatedPlaylist);
       }
     }
-    
+
     // Force rebuild để cập nhật UI
     setState(() {});
   }
