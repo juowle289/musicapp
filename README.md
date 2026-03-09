@@ -1,16 +1,4 @@
-# musicapp
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🎵 MusicApp - Melodies in your Pocket<p align="center"><img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" /><img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" /><img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" /></p>MusicApp là một ứng dụng nghe nhạc hiện đại được xây dựng bằng Flutter, tích hợp Cloud Firestore để đồng bộ hóa dữ liệu và SQLite để tối ưu hóa trải nghiệm người dùng. Ứng dụng sở hữu giao diện kết hợp giữa phong cách Cupertino mượt mà và Material Design linh hoạt.✨ Tính năng nổi bậtTrình phát nhạc thông minh: Hỗ trợ phát, tạm dừng, tua nhanh/chậm 10 giây và điều chỉnh âm lượng trực quan.Tìm kiếm đa năng: Tìm kiếm bài hát và playlist theo thời gian thực với giao diện tối ưu hóa cho cả Dark Mode và Light Mode.Quản lý yêu thích: Lưu giữ những bản nhạc yêu thích cá nhân hóa theo từng tài khoản thông qua LovedProvider.Đồng bộ đám mây: Sử dụng Firebase Authentication để bảo mật tài khoản và Firestore để lưu trữ dữ liệu bài hát vĩnh viễn.Giao diện nghệ thuật: MiniPlayer với đĩa xoay Vinyl lấp lánh và hiệu ứng đổ bóng Gradient theo màu sắc album.📸 Ảnh chụp màn hìnhTrang Tìm KiếmTrình Phát Nhạc<img src="https://via.placeholder.com/200x400?text=Search+Page" width="200"><img src="https://via.placeholder.com/200x400?text=Player+Page" width="200">🛠 Công nghệ sử dụngFrontend: Flutter & Dart.State Management: Provider (MultiProvider, Consumer).Audio Engine: audioplayers cho trải nghiệm âm thanh mượt mà.Backend: Firebase (Auth, Firestore, Storage).Local DB: SQLite (sqflite).🚀 Cài đặt và Chạy thửClone dự án:Bashgit clone https://github.com/user/musicapp.git
+Cài đặt dependencies:Bashflutter pub get
+Cấu hình Firebase:Thêm file google-services.json vào thư mục android/app/.Chạy ứng dụng:Bashflutter run
+📝 Cấu trúc thư mục chínhdatas/providers/: Quản lý logic và trạng thái (Music, Auth, Loved, Theme).presentation/pages/: Chứa giao diện các trang (Search, Detail, Playlist).datas/models/: Định nghĩa cấu trúc dữ liệu Song và Playlist.

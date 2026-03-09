@@ -36,7 +36,7 @@ class _LibraryPageState extends State<LibraryPage> {
 
   final List<String> _chipLabels = ['Tất cả', 'Bài hát', 'Playlist', 'Của tôi'];
 
-  void _openSearchPage() {
+  void _openSearchPage() {  
     Navigator.push(
       context,
       CupertinoPageRoute(builder: (_) => const SearchPage()),
