@@ -117,7 +117,7 @@ class _LibraryPageState extends State<LibraryPage> {
       padding: EdgeInsets.zero,
       onPressed: onPressed,
       child: Container(
-        padding: const EdgeInsets.all(6),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: isDarkMode ? Colors.grey[800] : CupertinoColors.systemGrey6,
           shape: BoxShape.circle,
@@ -255,6 +255,7 @@ class _LibraryPageState extends State<LibraryPage> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  const SizedBox(height: 6),
                   Text(
                     '${playlist.songIds.length} bài hát',
                     style: TextStyle(
@@ -308,10 +309,11 @@ class _LibraryPageState extends State<LibraryPage> {
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
                 ),
+                const SizedBox(height: 6),
                 Text(
                   'Lưu trữ các bài hát yêu thích',
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 16,
                     color: isDarkMode
                         ? Colors.grey[400]
                         : CupertinoColors.secondaryLabel,

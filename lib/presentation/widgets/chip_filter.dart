@@ -95,7 +95,7 @@ class ChipFilter extends StatelessWidget {
         fontSize: 16,
         color: isSelected
             ? (isDarkMode ? Colors.black : Colors.white)
-            : (isDarkMode ? Colors.grey[400] : Colors.grey),
+            : (isDarkMode ? Colors.grey[400]! : Colors.grey),
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
