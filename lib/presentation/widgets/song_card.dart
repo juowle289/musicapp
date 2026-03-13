@@ -63,7 +63,7 @@ class SongCard extends StatelessWidget {
               song.title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: 18,
                 color: isDarkMode ? Colors.white : CupertinoColors.label,
               ),
               maxLines: 1,

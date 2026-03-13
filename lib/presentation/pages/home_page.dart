@@ -479,6 +479,7 @@ class _HomeContentState extends State<HomeContent> {
                                 child: Text(
                                   'Xem hết',
                                   style: TextStyle(
+                                    fontSize: 16,
                                     color: isDarkMode
                                         ? darkAccent
                                         : Colors.blue,
@@ -537,6 +538,7 @@ class _HomeContentState extends State<HomeContent> {
                                 child: Text(
                                   'Xem hết',
                                   style: TextStyle(
+                                    fontSize: 16,
                                     color: isDarkMode
                                         ? darkAccent
                                         : Colors.blue,

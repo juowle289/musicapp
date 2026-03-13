@@ -255,7 +255,7 @@ class _LibraryPageState extends State<LibraryPage> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 10),
                   Text(
                     '${playlist.songIds.length} bài hát',
                     style: TextStyle(
@@ -309,7 +309,7 @@ class _LibraryPageState extends State<LibraryPage> {
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 10),
                 Text(
                   'Lưu trữ các bài hát yêu thích',
                   style: TextStyle(
@@ -421,8 +421,8 @@ class _LibraryPageState extends State<LibraryPage> {
         child: Row(
           children: [
             SizedBox(
-              width: 50,
-              height: 50,
+              width: 60,
+              height: 60,
               child: _buildCoverWrapper(
                 isDarkMode: isDarkMode,
                 child: song.coverPath != null
@@ -450,6 +450,7 @@ class _LibraryPageState extends State<LibraryPage> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  const SizedBox(height: 6,),
                   Text(
                     song.artist,
                     style: TextStyle(
@@ -492,7 +493,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 Text(
                   '${(song.duration / 60).floor()}:${(song.duration % 60).toString().padLeft(2, '0')}',
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 16,
                     color: isDarkMode
                         ? Colors.grey[400]
                         : CupertinoColors.secondaryLabel,
