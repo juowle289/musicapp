@@ -368,17 +368,17 @@ class _SearchPageState extends State<SearchPage> {
         child: Row(
           children: [
             Container(
-              width: 50,
-              height: 50,
+              width: 60,
+              height: 60,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(6),
                 color: isDarkMode
                     ? Colors.grey[800]
                     : CupertinoColors.systemGrey6,
               ),
               child: song.coverPath != null
                   ? ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(6),
                       child: Image.asset(song.coverPath!, fit: BoxFit.cover),
                     )
                   : Icon(
@@ -389,7 +389,7 @@ class _SearchPageState extends State<SearchPage> {
                       size: 20,
                     ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -397,17 +397,18 @@ class _SearchPageState extends State<SearchPage> {
                   Text(
                     song.title,
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: isDarkMode ? Colors.white : CupertinoColors.label,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  const SizedBox(height: 4),
                   Text(
                     song.artist,
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: 16,
                       color: isDarkMode
                           ? Colors.grey[400]
                           : CupertinoColors.secondaryLabel,
@@ -422,7 +423,7 @@ class _SearchPageState extends State<SearchPage> {
               onTap: () => _toggleLoveSong(song),
               child: Icon(
                 isLoved ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
-                size: 22,
+                size: 26,
                 color: isLoved
                     ? (isDarkMode ? darkAccent : CupertinoColors.systemYellow)
                     : (isDarkMode

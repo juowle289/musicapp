@@ -37,6 +37,7 @@ class SettingsPage extends StatelessWidget {
               middle: Text(
                 'Cài đặt',
                 style: TextStyle(
+                  fontSize: 20,
                   color: isDarkMode ? Colors.white : CupertinoColors.label,
                 ),
               ),
@@ -164,7 +165,7 @@ class SettingsPage extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 13,
+          fontSize: 16,
           fontWeight: FontWeight.w600,
           color: isDarkMode ? Colors.grey[400] : CupertinoColors.systemGrey,
           letterSpacing: 0.5,
@@ -205,7 +206,7 @@ class SettingsPage extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                size: 22,
+                size: 26,
                 color: iconColor ?? (isDarkMode ? Colors.white : CupertinoColors.label),
               ),
               const SizedBox(width: 12),
@@ -213,14 +214,14 @@ class SettingsPage extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     color: titleColor ?? (isDarkMode ? Colors.white : CupertinoColors.label),
                   ),
                 ),
               ),
               Icon(
                 CupertinoIcons.chevron_right,
-                size: 16,
+                size: 20,
                 color: isDarkMode ? Colors.grey[600] : CupertinoColors.systemGrey3,
               ),
             ],

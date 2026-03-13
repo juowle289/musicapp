@@ -20,7 +20,7 @@ class ChipFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 55,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -47,12 +47,12 @@ class ChipFilter extends StatelessWidget {
     return GestureDetector(
       onTap: () => onSelected?.call(index),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
               ? (isDarkMode ? darkAccent : Colors.black)
               : (isDarkMode ? darkBackground : Colors.white),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(50),
           border: Border.all(
             color: isDarkMode ? Colors.grey[700]! : Colors.grey,
             width: 0.5,
@@ -61,6 +61,7 @@ class ChipFilter extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(
+            fontSize: 16,
             color: isSelected
                 ? (isDarkMode ? Colors.black : Colors.white)
                 : (isDarkMode ? Colors.grey[400] : Colors.grey),
@@ -91,13 +92,14 @@ class ChipFilter extends StatelessWidget {
         width: 0.8,
       ),
       labelStyle: TextStyle(
+        fontSize: 16,
         color: isSelected
             ? (isDarkMode ? Colors.black : Colors.white)
             : (isDarkMode ? Colors.grey[400] : Colors.grey),
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       showCheckmark: false,
     );
   }

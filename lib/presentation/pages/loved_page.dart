@@ -45,6 +45,7 @@ class _LovedPageState extends State<LovedPage> {
               middle: Text(
                 'Yêu thích',
                 style: TextStyle(
+                  fontSize: 20,
                   color: isDarkMode ? Colors.white : CupertinoColors.label,
                 ),
               ),
@@ -141,14 +142,14 @@ class _LovedPageState extends State<LovedPage> {
               width: 55,
               height: 55,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(6),
                 color: isDarkMode
                     ? Colors.grey[800]
                     : CupertinoColors.systemGrey6,
               ),
               child: song.coverPath != null
                   ? ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(6),
                       child: Image.asset(song.coverPath!, fit: BoxFit.cover),
                     )
                   : Icon(
@@ -159,7 +160,7 @@ class _LovedPageState extends State<LovedPage> {
                       size: 24,
                     ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,18 +168,18 @@ class _LovedPageState extends State<LovedPage> {
                   Text(
                     song.title,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: isDarkMode ? Colors.white : CupertinoColors.label,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 6),
                   Text(
                     song.artist,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: isDarkMode
                           ? Colors.grey[400]
                           : CupertinoColors.secondaryLabel,

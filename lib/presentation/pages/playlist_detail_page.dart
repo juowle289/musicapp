@@ -306,6 +306,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
               padding: EdgeInsets.zero,
               child: Icon(
                 CupertinoIcons.back,
+                size: 30,
                 color: isDarkMode ? Colors.white : Colors.black,
               ),
               onPressed: () => Navigator.pop(context),
@@ -355,11 +356,13 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                                         Text(
                                           'DANH SÁCH BÀI HÁT',
                                           style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 16,
                                             fontWeight: FontWeight.w800,
                                             letterSpacing: 1.5,
                                             color: isDarkMode
-                                                ? darkAccent.withOpacity(0.7)
+                                                ? darkAccent.withValues(
+                                                    alpha: 0.7,
+                                                  )
                                                 : Colors.black54,
                                           ),
                                         ),
@@ -507,7 +510,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: isDarkMode
-              ? [accent.withOpacity(0.15), const Color(0xFF121212)]
+              ? [accent.withValues(alpha: 0.15), const Color(0xFF121212)]
               : [Colors.grey[200]!, Colors.white],
         ),
       ),
@@ -520,7 +523,9 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                  color: isDarkMode ? accent.withOpacity(0.1) : Colors.black26,
+                  color: isDarkMode
+                      ? accent.withValues(alpha: 0.1)
+                      : Colors.black26,
                   blurRadius: 30,
                   offset: const Offset(0, 15),
                 ),
@@ -650,20 +655,20 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
           color: bg,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
           children: [
-            Icon(icon, color: text, size: 16),
-            const SizedBox(width: 4),
+            Icon(icon, color: text, size: 18),
+            const SizedBox(width: 6),
             Text(
               label,
               style: TextStyle(
                 color: text,
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -722,7 +727,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
             Icon(
               CupertinoIcons.ellipsis,
               color: isDarkMode ? Colors.grey[700] : Colors.grey[400],
-              size: 20,
+              size: 22,
             ),
           ],
         ),

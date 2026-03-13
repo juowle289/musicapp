@@ -167,8 +167,8 @@ class _MiniPlayerState extends State<MiniPlayer>
                                 Text(
                                   currentSong.title,
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
                                     color: isDarkMode
                                         ? Colors.white
                                         : CupertinoColors.label,

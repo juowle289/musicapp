@@ -75,7 +75,7 @@ class SongCard extends StatelessWidget {
                 color: isDarkMode
                     ? Colors.grey[400]
                     : CupertinoColors.systemGrey,
-                fontSize: 14,
+                fontSize: 16,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
