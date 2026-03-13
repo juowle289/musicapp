@@ -553,14 +553,14 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
               Text(
                 'Tác giả: ',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 16,
                   color: isDarkMode ? Colors.grey[500] : Colors.grey[600],
                 ),
               ),
               Text(
                 _currentPlaylist.creatorEmail ?? 'Không xác định',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: isDarkMode ? accent : Colors.black,
                 ),
@@ -630,7 +630,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                 child: Icon(
                   CupertinoIcons.play_fill,
                   color: isDarkMode ? Colors.black : Colors.white,
-                  size: 26,
+                  size: 28,
                 ),
               ),
             ],
@@ -681,10 +681,10 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
         child: Row(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(6),
               child: Container(
-                width: 55,
-                height: 55,
+                width: 60,
+                height: 60,
                 color: isDarkMode ? Colors.grey[900] : Colors.grey[200],
                 child: song.coverPath != null
                     ? Image.asset(song.coverPath!, fit: BoxFit.cover)
@@ -700,8 +700,8 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                     song.title,
                     style: TextStyle(
                       color: isDarkMode ? Colors.white : Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -711,7 +711,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                     song.artist,
                     style: TextStyle(
                       color: isDarkMode ? Colors.grey[500] : Colors.grey[600],
-                      fontSize: 13,
+                      fontSize: 16,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
