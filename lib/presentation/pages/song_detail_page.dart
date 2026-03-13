@@ -324,6 +324,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
           elevation: 0,
           automaticallyImplyLeading: false,
           title: Text(
+            // song title
             widget.song.title,
             style: TextStyle(
               fontWeight: FontWeight.w600,
@@ -334,24 +335,24 @@ class _SongDetailPageState extends State<SongDetailPage> {
             overflow: TextOverflow.ellipsis,
           ),
           leading: CupertinoButton(
-            padding: EdgeInsets.zero,
+            padding: const EdgeInsets.symmetric(horizontal: 22),
             onPressed: () {
               _dismissKeyboard();
               Navigator.pop(context);
             },
             child: Icon(
               CupertinoIcons.chevron_down,
-              size: 20,
+              size: 24,
               color: isDarkMode ? Colors.white : CupertinoColors.label,
             ),
           ),
           actions: [
             CupertinoButton(
-              padding: EdgeInsets.zero,
+              padding: const EdgeInsets.symmetric(horizontal: 22),
               onPressed: () => _showOptionsSheet(isDarkMode),
               child: Icon(
                 CupertinoIcons.ellipsis,
-                size: 20,
+                size: 24,
                 color: isDarkMode ? Colors.white : CupertinoColors.label,
               ),
             ),
@@ -360,6 +361,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
         body: SafeArea(
           child: Column(
             children: [
+              const SizedBox(height: 5),
               Expanded(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
@@ -375,7 +377,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
                         isLoved,
                       ),
                       Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 40),
+                        margin: const EdgeInsets.symmetric(horizontal: 80),
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         decoration: BoxDecoration(
                           color: Colors.white.withValues(alpha: 0.08),
@@ -454,7 +456,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
     final paddingLine = screenWidth - 56;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 28.0),
+      padding: const EdgeInsets.symmetric(horizontal: 22),
       child: Column(
         children: [
           Center(
@@ -504,7 +506,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
               ),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           Row(
             children: [
               Expanded(
@@ -514,7 +516,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
                     Text(
                       widget.song.title,
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: isDarkMode
                             ? Colors.white
@@ -527,7 +529,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
                     Text(
                       widget.song.artist,
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         color: isDarkMode
                             ? Colors.grey[400]
                             : CupertinoColors.secondaryLabel,
@@ -562,7 +564,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 30),
           Material(
             type: MaterialType.transparency,
             child: SliderTheme(
@@ -585,23 +587,24 @@ class _SongDetailPageState extends State<SongDetailPage> {
               ),
             ),
           ),
+          // duration
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 _formatDuration(currentPosition.toInt()),
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 16,
                   color: isDarkMode
                       ? Colors.grey[400]
                       : CupertinoColors.secondaryLabel,
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 50),
               Text(
                 '-${_formatDuration(totalDuration.toInt() - currentPosition.toInt())}',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 16,
                   color: isDarkMode
                       ? Colors.grey[400]
                       : CupertinoColors.secondaryLabel,
@@ -609,6 +612,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
               ),
             ],
           ),
+          // control
           SizedBox(
             width: paddingLine,
             child: Row(
@@ -616,14 +620,14 @@ class _SongDetailPageState extends State<SongDetailPage> {
               children: [
                 Icon(
                   CupertinoIcons.shuffle,
-                  size: 20,
+                  size: 25,
                   color: isDarkMode ? Colors.white : CupertinoColors.label,
                 ),
                 GestureDetector(
                   onTap: () => musicProvider.skipBackward(),
                   child: Icon(
                     CupertinoIcons.backward_fill,
-                    size: 32,
+                    size: 38,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
                 ),
@@ -641,7 +645,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
                     isPlaying
                         ? CupertinoIcons.pause_circle_fill
                         : CupertinoIcons.play_circle_fill,
-                    size: 56,
+                    size: 74,
                     color: isDarkMode ? darkAccent : CupertinoColors.label,
                   ),
                 ),
@@ -649,13 +653,13 @@ class _SongDetailPageState extends State<SongDetailPage> {
                   onTap: () => musicProvider.skipForward(),
                   child: Icon(
                     CupertinoIcons.forward_fill,
-                    size: 32,
+                    size: 38,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
                 ),
                 Icon(
                   CupertinoIcons.repeat,
-                  size: 20,
+                  size: 25,
                   color: isDarkMode ? Colors.white : CupertinoColors.label,
                 ),
               ],
@@ -678,8 +682,8 @@ class _SongDetailPageState extends State<SongDetailPage> {
     final darkAccent = const Color(0xFFFEEC93);
     return Container(
       padding: EdgeInsets.only(
-        left: 16,
-        right: 16,
+        left: 20,
+        right: 20,
         bottom: MediaQuery.of(context).viewInsets.bottom + 16,
         top: 12,
       ),
@@ -746,7 +750,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
           Text(
             'Nghệ sĩ',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: isDarkMode ? Colors.white : CupertinoColors.label,
             ),
@@ -755,13 +759,13 @@ class _SongDetailPageState extends State<SongDetailPage> {
           Text(
             widget.song.artist,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 16,
               color: isDarkMode
                   ? Colors.grey[300]
                   : CupertinoColors.secondaryLabel,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 16),
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(12),
@@ -774,7 +778,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
             child: Text(
               'Thông tin về nghệ sĩ ${widget.song.artist} sẽ được hiển thị ở đây.',
               style: TextStyle(
-                fontSize: 13,
+                fontSize: 16,
                 color: isDarkMode
                     ? Colors.grey[400]
                     : CupertinoColors.secondaryLabel,
@@ -798,7 +802,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
           Text(
             'Bình luận',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: isDarkMode ? Colors.white : CupertinoColors.label,
             ),
@@ -820,7 +824,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
                   child: Text(
                     'Chưa có bình luận nào. Hãy là người đầu tiên!',
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: 16,
                       color: isDarkMode
                           ? Colors.grey[400]
                           : CupertinoColors.secondaryLabel,
@@ -875,7 +879,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
               Text(
                 comment.authorEmail,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: isDarkMode ? Colors.white : CupertinoColors.label,
                 ),
@@ -892,21 +896,21 @@ class _SongDetailPageState extends State<SongDetailPage> {
               ),
             ],
           ),
-          const SizedBox(height: 6),
+          const SizedBox(height: 8),
           Text(
             comment.content,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: isDarkMode
                   ? Colors.grey[300]
                   : CupertinoColors.secondaryLabel,
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10),
           Text(
             _formatTimeAgo(comment.createdAt),
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               color: isDarkMode
                   ? Colors.grey[500]
                   : CupertinoColors.tertiaryLabel,
@@ -927,7 +931,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
           Text(
             'Lời bài hát',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: isDarkMode ? Colors.white : CupertinoColors.label,
             ),
@@ -945,7 +949,7 @@ class _SongDetailPageState extends State<SongDetailPage> {
             child: Text(
               'Lời bài hát "${widget.song.title}" sẽ được hiển thị ở đây.',
               style: TextStyle(
-                fontSize: 13,
+                fontSize: 16,
                 color: isDarkMode
                     ? Colors.grey[400]
                     : CupertinoColors.secondaryLabel,

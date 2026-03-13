@@ -18,7 +18,14 @@ import 'package:flutter/material.dart'
         OutlineInputBorder,
         BottomNavigationBar,
         BottomNavigationBarType,
-        Icons;
+        Icons,
+        ListTile;
+import 'package:musicapp/presentation/pages/add_playlist.dart';
+import 'package:musicapp/presentation/pages/add_song_page.dart';
+import 'package:musicapp/presentation/pages/home_page.dart';
+import 'package:musicapp/presentation/pages/library_page.dart';
+import 'package:musicapp/presentation/pages/loved_page.dart';
+import 'package:musicapp/presentation/pages/settings_page.dart';
 import 'package:provider/provider.dart';
 import 'package:musicapp/datas/models/playlist.dart';
 import 'package:musicapp/datas/models/song.dart';
@@ -40,6 +47,148 @@ class PlaylistDetailPage extends StatefulWidget {
 }
 
 class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    const HomeContent(),
+    const LibraryPage(),
+    const SizedBox(),
+    const LovedPage(),
+    const SettingsPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    if (index == 2) {
+      _showAddBottomSheet();
+    } else {
+      setState(() => _selectedIndex = index);
+    }
+  }
+
+  void _showAddBottomSheet() {
+    final themeProvider = context.read<ThemeProvider>();
+    final isDarkMode = themeProvider.isDarkMode;
+    final darkBackground = const Color(0xFF2C2C2C);
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Container(
+        decoration: BoxDecoration(
+          color: isDarkMode ? darkBackground : Colors.white,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        child: SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 8),
+              Container(
+                width: 40,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: isDarkMode ? Colors.grey[600] : Colors.grey[300],
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(height: 16),
+              ListTile(
+                leading: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: isDarkMode
+                        ? Colors.grey[700]
+                        : CupertinoColors.systemGrey5,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Icon(
+                    CupertinoIcons.music_albums,
+                    size: 30,
+                    color: isDarkMode ? Colors.white : CupertinoColors.label,
+                  ),
+                ),
+                title: Text(
+                  'Tạo playlist',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    color: isDarkMode ? Colors.white : CupertinoColors.label,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          const AddPlaylistPage(),
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                            return SlideTransition(
+                              position:
+                                  Tween<Offset>(
+                                    begin: const Offset(0, 1),
+                                    end: Offset.zero,
+                                  ).animate(
+                                    CurvedAnimation(
+                                      parent: animation,
+                                      curve: Curves.easeOutCubic,
+                                    ),
+                                  ),
+                              child: child,
+                            );
+                          },
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 12),
+              Divider(
+                height: 1,
+                color: isDarkMode
+                    ? Colors.grey[700]
+                    : CupertinoColors.systemGrey5,
+              ),
+              const SizedBox(height: 12),
+              ListTile(
+                leading: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: isDarkMode
+                        ? Colors.grey[700]
+                        : CupertinoColors.systemGrey5,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Icon(
+                    CupertinoIcons.add,
+                    size: 30,
+                    color: isDarkMode ? Colors.white : CupertinoColors.label,
+                  ),
+                ),
+                title: Text(
+                  'Thêm nhạc',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    color: isDarkMode ? Colors.white : CupertinoColors.label,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(builder: (_) => const AddSongPage()),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   late Playlist _currentPlaylist;
   final ScrollController _scrollController = ScrollController();
   bool _showAppBarTitle = false;
@@ -198,18 +347,23 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                                   horizontal: 20,
                                 ),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      'DANH SÁCH BÀI HÁT',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w800,
-                                        letterSpacing: 1.5,
-                                        color: isDarkMode
-                                            ? darkAccent.withValues(alpha: 0.7)
-                                            : Colors.black54,
-                                      ),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'DANH SÁCH BÀI HÁT',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w800,
+                                            letterSpacing: 1.5,
+                                            color: isDarkMode
+                                                ? darkAccent.withOpacity(0.7)
+                                                : Colors.black54,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     const SizedBox(height: 16),
                                   ],
@@ -262,34 +416,38 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: 0,
+            onTap: _onItemTapped,
             type: BottomNavigationBarType.fixed,
             selectedItemColor: isDarkMode ? darkAccent : Colors.black,
             unselectedItemColor: isDarkMode ? Colors.grey : Colors.grey,
             backgroundColor: isDarkMode ? darkBackground : Colors.white,
+            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500),
+            unselectedLabelStyle: const TextStyle(),
             showUnselectedLabels: true,
-            selectedFontSize: 12,
-            unselectedFontSize: 12,
             elevation: 8,
-            onTap: (index) {},
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.home_outlined,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
                   Icons.home,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Trang chủ',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.library_music,
+                  Icons.library_music_outlined,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
                   Icons.library_music,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Thư viện',
@@ -297,32 +455,38 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.add_circle_outline,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
-                  Icons.add_circle_outline,
+                  Icons.add_circle_sharp,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Thêm nhạc',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.favorite_border,
+                  Icons.favorite_border_outlined,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
-                  Icons.favorite_border,
+                  Icons.favorite_sharp,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Yêu thích',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.settings,
+                  Icons.settings_outlined,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
                   Icons.settings,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Cài đặt',
@@ -343,7 +507,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: isDarkMode
-              ? [accent.withValues(alpha: 0.15), const Color(0xFF121212)]
+              ? [accent.withOpacity(0.15), const Color(0xFF121212)]
               : [Colors.grey[200]!, Colors.white],
         ),
       ),
@@ -356,9 +520,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                  color: isDarkMode
-                      ? accent.withValues(alpha: 0.1)
-                      : Colors.black26,
+                  color: isDarkMode ? accent.withOpacity(0.1) : Colors.black26,
                   blurRadius: 30,
                   offset: const Offset(0, 15),
                 ),
@@ -1106,8 +1268,8 @@ class _EditPlaylistSheetState extends State<_EditPlaylistSheet> {
           ),
           const SizedBox(width: 12),
           Container(
-            width: 45,
-            height: 45,
+            width: 55,
+            height: 55,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
               color: widget.isDarkMode
@@ -1124,7 +1286,7 @@ class _EditPlaylistSheetState extends State<_EditPlaylistSheet> {
                     color: widget.isDarkMode
                         ? Colors.grey[600]
                         : CupertinoColors.systemGrey,
-                    size: 20,
+                    size: 24,
                   ),
           ),
           const SizedBox(width: 12),
@@ -1135,8 +1297,8 @@ class _EditPlaylistSheetState extends State<_EditPlaylistSheet> {
                 Text(
                   song.title,
                   style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
                     color: textColor,
                   ),
                   maxLines: 1,
@@ -1144,7 +1306,7 @@ class _EditPlaylistSheetState extends State<_EditPlaylistSheet> {
                 ),
                 Text(
                   song.artist,
-                  style: TextStyle(fontSize: 13, color: subtitleColor),
+                  style: TextStyle(fontSize: 16, color: subtitleColor),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -1157,7 +1319,7 @@ class _EditPlaylistSheetState extends State<_EditPlaylistSheet> {
             color: widget.isDarkMode
                 ? Colors.grey[500]
                 : CupertinoColors.systemGrey,
-            size: 20,
+            size: 24,
           ),
         ],
       ),

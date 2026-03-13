@@ -158,7 +158,7 @@ class _MiniPlayerState extends State<MiniPlayer>
                               },
                             ),
                           ),
-                          const SizedBox(width: 12),
+                          const SizedBox(width: 14),
                           Expanded(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -180,7 +180,7 @@ class _MiniPlayerState extends State<MiniPlayer>
                                 Text(
                                   currentSong.artist,
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 14,
                                     color: isDarkMode
                                         ? Colors.grey[400]
                                         : CupertinoColors.secondaryLabel,

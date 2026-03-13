@@ -36,7 +36,7 @@ class _LibraryPageState extends State<LibraryPage> {
 
   final List<String> _chipLabels = ['Tất cả', 'Bài hát', 'Playlist', 'Của tôi'];
 
-  void _openSearchPage() {  
+  void _openSearchPage() {
     Navigator.push(
       context,
       CupertinoPageRoute(builder: (_) => const SearchPage()),
@@ -166,7 +166,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 child: Text(
                   'Playlist',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
@@ -176,7 +176,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 (playlist) => _buildPlaylistItem(playlist, isDarkMode),
               ),
             ],
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             _buildCreatePlaylistCard(isDarkMode),
           ],
         );
@@ -234,7 +234,7 @@ class _LibraryPageState extends State<LibraryPage> {
                   ? Image.asset(playlist.coverPath!, fit: BoxFit.cover)
                   : Icon(
                       CupertinoIcons.music_albums,
-                      size: 30,
+                      size: 32,
                       color: isDarkMode
                           ? Colors.grey[600]
                           : CupertinoColors.systemGrey,
@@ -248,8 +248,8 @@ class _LibraryPageState extends State<LibraryPage> {
                   Text(
                     playlist.name,
                     style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
                       color: isDarkMode ? Colors.white : CupertinoColors.label,
                     ),
                     maxLines: 1,
@@ -258,7 +258,7 @@ class _LibraryPageState extends State<LibraryPage> {
                   Text(
                     '${playlist.songIds.length} bài hát',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: isDarkMode
                           ? Colors.grey[400]
                           : CupertinoColors.secondaryLabel,
@@ -269,7 +269,7 @@ class _LibraryPageState extends State<LibraryPage> {
             ),
             Icon(
               CupertinoIcons.chevron_right,
-              size: 18,
+              size: 20,
               color: isDarkMode
                   ? Colors.grey[600]
                   : CupertinoColors.systemGrey2,
@@ -303,7 +303,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 Text(
                   'Tạo playlist mới',
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
@@ -433,7 +433,7 @@ class _LibraryPageState extends State<LibraryPage> {
                       ),
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -441,7 +441,7 @@ class _LibraryPageState extends State<LibraryPage> {
                   Text(
                     song.title,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: isDarkMode ? Colors.white : CupertinoColors.label,
                     ),
@@ -451,7 +451,7 @@ class _LibraryPageState extends State<LibraryPage> {
                   Text(
                     song.artist,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: isDarkMode
                           ? Colors.grey[400]
                           : CupertinoColors.secondaryLabel,
@@ -467,7 +467,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 padding: EdgeInsets.zero,
                 onPressed: () => _showEditSongSheet(song, isDarkMode),
                 child: Icon(
-                  CupertinoIcons.pencil,
+                  CupertinoIcons.pencil_circle,
                   size: 20,
                   color: isDarkMode
                       ? Colors.grey[400]
@@ -478,7 +478,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 padding: EdgeInsets.zero,
                 onPressed: () => _showDeleteConfirmDialog(song, isDarkMode),
                 child: Icon(
-                  CupertinoIcons.trash,
+                  CupertinoIcons.minus_circle,
                   size: 20,
                   color: isDarkMode
                       ? Colors.red[400]
@@ -833,7 +833,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 child: Text(
                   'Bài hát của bạn (${mySongs.length})',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
@@ -851,7 +851,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 child: Text(
                   'Playlist của bạn (${myPlaylists.length})',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),

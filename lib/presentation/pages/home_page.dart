@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 16),
               ListTile(
                 leading: Container(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: isDarkMode
                         ? Colors.grey[700]
@@ -101,6 +101,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Icon(
                     CupertinoIcons.music_albums,
+                    size: 30,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
                 ),
@@ -108,6 +109,7 @@ class _HomePageState extends State<HomePage> {
                   'Tạo playlist',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
+                    fontSize: 16,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
                 ),
@@ -138,15 +140,17 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
+              const SizedBox(height: 12),
               Divider(
                 height: 1,
                 color: isDarkMode
                     ? Colors.grey[700]
                     : CupertinoColors.systemGrey5,
               ),
+              const SizedBox(height: 12),
               ListTile(
                 leading: Container(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: isDarkMode
                         ? Colors.grey[700]
@@ -155,6 +159,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Icon(
                     CupertinoIcons.add,
+                    size: 30,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
                 ),
@@ -162,6 +167,7 @@ class _HomePageState extends State<HomePage> {
                   'Thêm nhạc',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
+                    fontSize: 16,
                     color: isDarkMode ? Colors.white : CupertinoColors.label,
                   ),
                 ),
@@ -202,23 +208,25 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: isDarkMode ? darkBackground : Colors.white,
             selectedLabelStyle: TextStyle(
               color: isDarkMode ? darkAccent : Colors.black,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
             ),
             unselectedLabelStyle: TextStyle(
               color: isDarkMode ? Colors.grey : Colors.grey,
             ),
             showUnselectedLabels: true,
-            selectedFontSize: 12,
-            unselectedFontSize: 12,
+            selectedFontSize: 13,
+            unselectedFontSize: 13,
             elevation: 8,
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home_outlined,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
                   Icons.home,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Trang chủ',
@@ -226,10 +234,12 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.library_music_outlined,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
                   Icons.library_music,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Thư viện',
@@ -237,10 +247,12 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.add_circle_outline,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
                   Icons.add_circle_sharp,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Thêm nhạc',
@@ -248,10 +260,12 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.favorite_border_outlined,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
                   Icons.favorite_sharp,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Yêu thích',
@@ -259,10 +273,12 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.settings_outlined,
+                  size: 30,
                   color: isDarkMode ? Colors.grey : Colors.grey,
                 ),
                 activeIcon: Icon(
                   Icons.settings,
+                  size: 30,
                   color: isDarkMode ? darkAccent : Colors.black,
                 ),
                 label: 'Cài đặt',
@@ -332,7 +348,7 @@ class _HomeContentState extends State<HomeContent> {
                     child: Text(
                       'Hi, $email',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.w600,
                         color: isDarkMode
                             ? Colors.white
@@ -348,7 +364,7 @@ class _HomeContentState extends State<HomeContent> {
                   GestureDetector(
                     onTap: _openSearchPage,
                     child: Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: isDarkMode
                             ? Colors.grey[800]
@@ -357,14 +373,16 @@ class _HomeContentState extends State<HomeContent> {
                       ),
                       child: Icon(
                         CupertinoIcons.search,
-                        size: 18,
-                        color: isDarkMode ? Colors.white : CupertinoColors.label,
+                        size: 20,
+                        color: isDarkMode
+                            ? Colors.white
+                            : CupertinoColors.label,
                       ),
                     ),
                   ),
-                  const SizedBox(width: 4),
+                  const SizedBox(width: 10),
                   Container(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: isDarkMode
                           ? Colors.grey[800]
@@ -373,11 +391,11 @@ class _HomeContentState extends State<HomeContent> {
                     ),
                     child: Icon(
                       CupertinoIcons.bell,
-                      size: 18,
+                      size: 20,
                       color: isDarkMode ? Colors.white : CupertinoColors.label,
                     ),
                   ),
-                  const SizedBox(width: 4),
+                  // const SizedBox(width: 8),
                 ],
               ),
             ),
@@ -389,11 +407,13 @@ class _HomeContentState extends State<HomeContent> {
                     return Center(
                       child: CupertinoActivityIndicator(
                         radius: 16,
-                        color: isDarkMode ? Colors.white : CupertinoColors.activeBlue,
+                        color: isDarkMode
+                            ? Colors.white
+                            : CupertinoColors.activeBlue,
                       ),
                     );
                   }
-                  
+
                   if (provider.songs.isEmpty) {
                     return Center(
                       child: Column(
@@ -447,7 +467,7 @@ class _HomeContentState extends State<HomeContent> {
                                     ? 'Phổ biến ngày hôm nay'
                                     : _chipLabels[_selectedChipIndex],
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 24,
                                   fontWeight: FontWeight.bold,
                                   color: isDarkMode
                                       ? Colors.white
@@ -505,7 +525,7 @@ class _HomeContentState extends State<HomeContent> {
                               Text(
                                 'Bạn hay nghe gần đây',
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 24,
                                   fontWeight: FontWeight.bold,
                                   color: isDarkMode
                                       ? Colors.white
@@ -541,19 +561,19 @@ class _HomeContentState extends State<HomeContent> {
                                 child: Row(
                                   children: [
                                     ClipRRect(
-                                      borderRadius: BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(10),
                                       child:
                                           song.coverPath != null &&
                                               song.coverPath!.isNotEmpty
                                           ? Image.asset(
                                               song.coverPath!,
-                                              width: 60,
-                                              height: 60,
+                                              width: 80,
+                                              height: 80,
                                               fit: BoxFit.cover,
                                             )
                                           : Container(
-                                              width: 60,
-                                              height: 60,
+                                              width: 80,
+                                              height: 80,
                                               color: isDarkMode
                                                   ? Colors.grey[800]
                                                   : Colors.grey[300],
@@ -575,8 +595,8 @@ class _HomeContentState extends State<HomeContent> {
                                           Text(
                                             song.title,
                                             style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500,
                                               color: isDarkMode
                                                   ? Colors.white
                                                   : CupertinoColors.label,
@@ -584,7 +604,7 @@ class _HomeContentState extends State<HomeContent> {
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                           ),
-                                          const SizedBox(height: 4),
+                                          const SizedBox(height: 6),
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -593,7 +613,7 @@ class _HomeContentState extends State<HomeContent> {
                                                 child: Text(
                                                   song.artist,
                                                   style: TextStyle(
-                                                    fontSize: 14,
+                                                    fontSize: 16,
                                                     color: isDarkMode
                                                         ? Colors.grey[400]
                                                         : Colors.grey,
@@ -603,18 +623,18 @@ class _HomeContentState extends State<HomeContent> {
                                                       TextOverflow.ellipsis,
                                                 ),
                                               ),
-                                              Text(
-                                                '${(song.duration / 60).floor()}:${(song.duration % 60).toString().padLeft(2, '0')}',
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: isDarkMode
-                                                      ? Colors.grey[400]
-                                                      : Colors.grey,
-                                                ),
-                                              ),
                                             ],
                                           ),
                                         ],
+                                      ),
+                                    ),
+                                    Text(
+                                      '${(song.duration / 60).floor()}:${(song.duration % 60).toString().padLeft(2, '0')}',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: isDarkMode
+                                            ? Colors.grey[400]
+                                            : Colors.grey,
                                       ),
                                     ),
                                   ],
