@@ -135,7 +135,6 @@ class DatabaseHelper {
     return List.generate(maps.length, (i) => Song.fromMap(maps[i]));
   }
 
-  // Get songs ordered by playCount (most played first)
   Future<List<Song>> getTopSongs({int limit = 5}) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(
@@ -146,7 +145,6 @@ class DatabaseHelper {
     return List.generate(maps.length, (i) => Song.fromMap(maps[i]));
   }
 
-  // Increment play count for a song
   Future<void> incrementPlayCount(int songId) async {
     final db = await database;
     await db.rawUpdate(
@@ -224,7 +222,7 @@ class DatabaseHelper {
     return await db.delete('playlists', where: 'id = ?', whereArgs: [id]);
   }
 
-  // Loved songs operations - now using String songId
+  // Loved songs operations
   Future<List<String>> getLovedSongIds(String userEmail) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(

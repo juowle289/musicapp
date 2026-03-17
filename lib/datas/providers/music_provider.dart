@@ -26,7 +26,7 @@ class MusicProvider with ChangeNotifier {
   }
 
   void _initAudioPlayer() {
-    // Set initial volume
+   
     _audioPlayer.setVolume(_volume);
 
     _audioPlayer.onPositionChanged.listen((position) {
@@ -59,16 +59,6 @@ class MusicProvider with ChangeNotifier {
     _isPlaying = true;
     notifyListeners();
 
-    // Increment play count using SongProvider (Firestore)
-    if (song.id != null) {
-      // Get SongProvider from context if available
-      try {
-        // We can't access context here directly, so we'll handle it in the UI
-      } catch (e) {
-        // Ignore - will be handled elsewhere
-      }
-    }
-
     if (song.audioPath != null && song.audioPath!.isNotEmpty) {
       await _audioPlayer.setVolume(_volume);
       await _audioPlayer.play(
@@ -77,13 +67,6 @@ class MusicProvider with ChangeNotifier {
       _isPlaying = true;
     }
     notifyListeners();
-  }
-
-  // Method to increment play count - should be called from UI with context
-  Future<void> incrementPlayCount(Song song) async {
-    if (song.id != null) {
-      // This will be called from the UI where context is available
-    }
   }
 
   Future<void> togglePlayPause() async {

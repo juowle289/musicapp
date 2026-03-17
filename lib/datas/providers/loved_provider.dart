@@ -26,7 +26,6 @@ class LovedProvider with ChangeNotifier {
       final lovedSongIds = await _dbHelper.getLovedSongIds(userEmail);
       _lovedSongIds = lovedSongIds.map((id) => id.toString()).toList();
 
-      // Load full song details
       final allSongs = await _dbHelper.getAllSongs();
       _lovedSongs = allSongs
           .where((song) => _lovedSongIds.contains(song.id?.toString()))
@@ -45,12 +44,12 @@ class LovedProvider with ChangeNotifier {
 
     try {
       if (_lovedSongIds.contains(song.id)) {
-        // Remove from loved - use String id directly
+        // Remove from loved
         await _dbHelper.removeLovedSong(song.id!, userEmail);
         _lovedSongIds.remove(song.id);
         _lovedSongs.removeWhere((s) => s.id == song.id);
       } else {
-        // Add to loved - use String id directly
+        // Add to loved
         await _dbHelper.addLovedSong(song.id!, userEmail);
         _lovedSongIds.add(song.id!);
         _lovedSongs.add(song);
@@ -60,4 +59,5 @@ class LovedProvider with ChangeNotifier {
       debugPrint('Error toggling loved song: $e');
     }
   }
+
 }
